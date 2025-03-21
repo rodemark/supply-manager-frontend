@@ -5,6 +5,7 @@ import Products from './Products.jsx';
 import Suppliers from './Suppliers.jsx';
 import SupplierProductPrices from './SupplierProductPrices.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Reports from "./Reports.jsx";
 
 function App() {
     return (
@@ -15,22 +16,26 @@ function App() {
                     <nav>
                         <ul className="nav nav-pills">
                             <li className="nav-item">
-                                <Link to="/deliveries" className="nav-link">Доставки</Link>
+                                <Link to="/suppliers" className="nav-link">Поставщики</Link>
                             </li>
                             <li className="nav-item">
                                 <Link to="/products" className="nav-link">Продукты</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/suppliers" className="nav-link">Поставщики</Link>
+                                <Link to="/prices" className="nav-link">Цены поставщиков</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/prices" className="nav-link">Цены поставщиков</Link>
+                                <Link to="/deliveries" className="nav-link">Доставки</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/reports" className="nav-link">Отчет</Link>
                             </li>
                         </ul>
                     </nav>
                 </header>
                 <main>
                     <Routes>
+                        <Route path="/reports" element={<Reports />} />
                         <Route path="/deliveries" element={<Deliveries />} />
                         <Route path="/products" element={<Products />} />
                         <Route path="/suppliers" element={<Suppliers />} />

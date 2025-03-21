@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import api from "./api.js";
 
+// Значения enum для единиц измерения
+const units = ['KILOGRAM', 'LITER', 'PIECE'];
+
 function Products() {
     const [products, setProducts] = useState([]);
     const [editingProduct, setEditingProduct] = useState(null);
@@ -147,14 +150,18 @@ function Products() {
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Единица измерения:</label>
-                            <input
-                                type="text"
-                                className="form-control"
+                            <select
+                                className="form-select"
                                 value={formData.unitOfMeasurement}
-                                onChange={(e) =>
-                                    setFormData({ ...formData, unitOfMeasurement: e.target.value })
-                                }
-                            />
+                                onChange={(e) => setFormData({ ...formData, unitOfMeasurement: e.target.value })}
+                            >
+                                <option value="">Выберите единицу измерения</option>
+                                {units.map((unit) => (
+                                    <option key={unit} value={unit}>
+                                        {unit}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
                     </form>
                 </Modal.Body>
